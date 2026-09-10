@@ -206,7 +206,7 @@ input[type=text]:focus, textarea:focus{border-color:var(--rose);outline:none;box
 /* bring chips */
 .chips{display:flex;flex-wrap:wrap;gap:9px}
 .chips label{
-  cursor:pointer;border:1.5px solid rgba(217,162,115,.9);border-radius:999px;
+  cursor:pointer;border:1.5px solid rgba(217,162,115,.9);
   padding:.5em 1em;background:#fff;
   transition:background .15s ease,border-color .15s ease,color .15s ease;
 }
