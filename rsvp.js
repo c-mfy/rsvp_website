@@ -193,6 +193,22 @@ document.getElementById("ics").addEventListener("click", () => {
          + p(d.getUTCHours()) + p(d.getUTCMinutes()) + "00Z";
   };
   const e = CONFIG.event;
+
+  const isApple = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)
+                  && !/Android/.test(navigator.userAgent);
+
+  if (!isApple) {
+    window.open(
+      "https://calendar.google.com/calendar/render?action=TEMPLATE"
+      + "&text="     + encodeURIComponent(e.title)
+      + "&dates="    + fmt(e.start) + "/" + fmt(e.end)
+      + "&location=" + encodeURIComponent(e.location)
+      + "&details="  + encodeURIComponent(e.details),
+      "_blank"
+    );
+    return;
+  }
+
   const ics = [
     "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//invite//EN", "BEGIN:VEVENT",
     "UID:" + Date.now() + "@invite",
