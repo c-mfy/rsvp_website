@@ -9,11 +9,11 @@ const CONFIG = {
   supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxheHljcGxmZHZkam11Y2Vyb3FmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkwNjcwMzAsImV4cCI6MjEwNDY0MzAzMH0.kHfGcatxO5v2JoLrPt1fai4n69M2WArpsF77tnFa2Qk",
 
   event: {
-    title:    "San's 21st Birthday",
+    title: "San's 21st Birthday",
     location: "120 North Ave North, Apt 415, Atlanta, GA 30332",
-    details:  "Shrinky dinks, pipe cleaner flowers, mahjong, karaoke, cute drinks.",
-    start:    "2026-09-14T19:00:00",
-    end:      "2026-09-14T23:30:00"
+    details: "Shrinky dinks, pipe cleaner flowers, mahjong, karaoke, cute drinks.",
+    start: "2026-09-14T19:00:00",
+    end: "2026-09-14T23:30:00"
   }
 };
 
@@ -23,9 +23,9 @@ const HEADERS = {
   "Content-Type": "application/json"
 };
 
-const form       = document.getElementById("rsvpForm");
+const form = document.getElementById("rsvpForm");
 const bringBlock = document.getElementById("bringBlock");
-const chipsBox   = document.getElementById("chips");
+const chipsBox = document.getElementById("chips");
 
 let items = [];
 
@@ -94,7 +94,7 @@ form.addEventListener("change", (e) => {
     bringBlock.hidden = !coming;
     document.getElementById("attErr").hidden = true;
     // refresh counts on open — someone may have claimed since page load
-    if (coming && items.length) loadItems().catch(() => {});
+    if (coming && items.length) loadItems().catch(() => { });
   }
   if (e.target.id === "name") document.getElementById("nameErr").hidden = true;
 });
@@ -104,11 +104,11 @@ form.addEventListener("change", (e) => {
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const name      = document.getElementById("name").value.trim();
+  const name = document.getElementById("name").value.trim();
   const attending = form.querySelector("input[name=attending]:checked");
-  const note      = document.getElementById("note").value.trim();
-  const picked    = [...form.querySelectorAll("input[name=bring]:checked")]
-                      .map(c => c.value);
+  const note = document.getElementById("note").value.trim();
+  const picked = [...form.querySelectorAll("input[name=bring]:checked")]
+    .map(c => c.value);
 
   let bad = false;
   document.getElementById("sendErr").hidden = true;
@@ -118,7 +118,7 @@ form.addEventListener("submit", async (e) => {
   if (!attending) bad = true;
   if (bad) {
     form.querySelector(".err:not([hidden])")
-        .scrollIntoView({ block: "center", behavior: "smooth" });
+      .scrollIntoView({ block: "center", behavior: "smooth" });
     return;
   }
 
@@ -164,7 +164,7 @@ function showDone(name, coming, result) {
   list.innerHTML = "";
 
   const claimed = (result.claimed || []).map(labelFor);
-  const full    = (result.full    || []).map(labelFor);
+  const full = (result.full || []).map(labelFor);
 
   if (claimed.length) {
     const li = document.createElement("li");
@@ -174,7 +174,7 @@ function showDone(name, coming, result) {
   if (full.length) {
     const li = document.createElement("li");
     li.textContent = "someone beat you to " + full.join(" and ") +
-                     " — no need to bring it.";
+      " — no need to bring it.";
     list.append(li);
   }
 
@@ -190,20 +190,20 @@ document.getElementById("ics").addEventListener("click", () => {
     const d = new Date(s);
     const p = (n) => String(n).padStart(2, "0");
     return d.getUTCFullYear() + p(d.getUTCMonth() + 1) + p(d.getUTCDate()) + "T"
-         + p(d.getUTCHours()) + p(d.getUTCMinutes()) + "00Z";
+      + p(d.getUTCHours()) + p(d.getUTCMinutes()) + "00Z";
   };
   const e = CONFIG.event;
 
-  const isApple = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)
-                  && !/Android/.test(navigator.userAgent);
+  const isApple = /iPad|iPhone|iPod|Mac/.test(navigator.platform || "")
+    || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.userAgent));
 
   if (!isApple) {
     window.open(
       "https://calendar.google.com/calendar/render?action=TEMPLATE"
-      + "&text="     + encodeURIComponent(e.title)
-      + "&dates="    + fmt(e.start) + "/" + fmt(e.end)
+      + "&text=" + encodeURIComponent(e.title)
+      + "&dates=" + fmt(e.start) + "/" + fmt(e.end)
       + "&location=" + encodeURIComponent(e.location)
-      + "&details="  + encodeURIComponent(e.details),
+      + "&details=" + encodeURIComponent(e.details),
       "_blank"
     );
     return;
@@ -214,9 +214,9 @@ document.getElementById("ics").addEventListener("click", () => {
     "UID:" + Date.now() + "@invite",
     "DTSTAMP:" + fmt(new Date().toISOString()),
     "DTSTART:" + fmt(e.start),
-    "DTEND:"   + fmt(e.end),
-    "SUMMARY:"     + e.title,
-    "LOCATION:"    + e.location,
+    "DTEND:" + fmt(e.end),
+    "SUMMARY:" + e.title,
+    "LOCATION:" + e.location,
     "DESCRIPTION:" + e.details,
     "END:VEVENT", "END:VCALENDAR"
   ].join("\r\n");
