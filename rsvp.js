@@ -67,7 +67,7 @@ function renderChips() {
       const count = document.createElement("span");
       count.className = "count";
       count.textContent = full
-        ? "covered"
+        ? " (covered!)"
         : " (" + item.claimed + " of " + item.quota + ")";
       label.append(count);
     }
@@ -155,10 +155,10 @@ function labelFor(id) {
 }
 
 function showDone(name, coming, result) {
-  document.getElementById("doneTitle").textContent = coming ? "yay" : "next time";
+  document.getElementById("doneTitle").textContent = coming ? "yayy" : "noo";
   document.getElementById("doneMsg").textContent = coming
     ? "you're on the list, " + name + ". september 14th at 7:00pm."
-    : "thanks for telling us, " + name + ". you'll be missed.";
+    : "thanks for letting us know, you'll be missed :,(.";
 
   const list = document.getElementById("doneList");
   list.innerHTML = "";

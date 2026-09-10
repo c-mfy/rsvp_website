@@ -4,7 +4,7 @@
   --berry:    #bd6e82;
   --rose:     #E48EA1;
   --blush:    #F6DCE1;
-  --ink:      #5C1F2C;
+  --ink:      #824452;
   --muted:    #9A7280;
 }
 
@@ -21,7 +21,7 @@ body{
     radial-gradient(rgba(140,29,54,.022) 1px, transparent 1px);
   background-size:11px 11px, 17px 17px;
   background-position:0 0, 5px 8px;
-  color:var(--ink);
+  color:var(--berry);
   font-family:"Cormorant Garamond", Georgia, "Times New Roman", serif;
   font-size:18px;
   line-height:1.6;
@@ -43,7 +43,7 @@ body{
 .card::after{
   content:"";
   position:absolute; inset:7px;
-  border:1px solid rgba(228,142,161,.4);
+  border:1px solid var(--berry);
   border-radius:2px;
   pointer-events:none;
 }
@@ -150,7 +150,7 @@ body{
   transition:background .18s ease, color .18s ease;
 }
 .btn-solid{background:var(--berry);color:#FEFAF3}
-.btn-solid:hover{background:#701428}
+.btn-solid:hover{background: var(--ink)}
 .btn-ghost{background:transparent;color:var(--berry)}
 .btn-ghost:hover{background:var(--blush)}
 .btn:disabled{opacity:.5;cursor:default}
@@ -196,7 +196,7 @@ label.field{display:block;margin-bottom:1.5em}
 label.field > span{display:block;font-weight:600;color:var(--berry);margin-bottom:.35em}
 
 input[type=text], textarea{
-  width:100%;font-family:inherit;font-size:1.05rem;color:var(--ink);
+  width:100%;font-family:inherit;font-size:1.05rem;color:var(--berry);
   background:#fff;
   border:1.5px solid var(--rose);
   border-radius:3px;
@@ -221,6 +221,7 @@ input[type=text]:focus, textarea:focus{border-color:var(--rose);outline:none;box
 /* bring chips */
 .chips{display:flex;flex-wrap:wrap;gap:9px}
 .chips label{
+  text-transform: lowercase;
   cursor:pointer;border:1.5px solid var(--rose);
   padding:.5em 1em;background:#fff;
   transition:background .15s ease,border-color .15s ease,color .15s ease;
@@ -228,6 +229,18 @@ input[type=text]:focus, textarea:focus{border-color:var(--rose);outline:none;box
 .chips input{position:absolute;opacity:0;width:0;height:0}
 .chips label:has(input:checked){background:var(--blush);border-color:var(--berry);color:var(--berry);font-weight:600}
 .chips label:has(input:focus-visible){outline:2.5px solid var(--rose);outline-offset:3px}
+
+.chips label.full{
+  opacity:.5;
+  cursor:not-allowed;
+  background:#F7F1E8;
+  border-style:dashed;
+  text-decoration:line-through;
+}
+.chips label.full .count{
+  text-decoration:none;
+  font-style:italic;
+}
 
 .err{color:#A81436;font-size:.95rem;margin:.4em 0 0;min-height:0}
 [hidden]{display:none !important}
