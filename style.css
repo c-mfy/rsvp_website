@@ -57,10 +57,10 @@ body{
   height:auto;
   pointer-events:none;
 }
-.miffy.tl{top:15px;left:0px}
-.miffy.tr{top:15px;right:0px}
-.miffy.bl{bottom:15px;left:0px}
-.miffy.br{bottom:15px;right:0px}
+.miffy.tl{top:5px;left:15px}
+.miffy.tr{top:5px;right:15px}
+.miffy.bl{bottom:5px;left:15px}
+.miffy.br{bottom:5px;right:15px}
 .miffy.tr{transform:scaleX(-1)}
 
 .bow{position:absolute;width:clamp(52px,15vw,96px);height:auto;color:var(--rose);pointer-events:none}
@@ -99,7 +99,6 @@ body{
 }
 
 .cake{display:block;margin:clamp(22px,6vw,34px) auto;width:clamp(120px,34vw,190px);height:auto;color:var(--berry)}
-
 .honoree{
   font-size:clamp(1.6rem, 6.4vw, 2.4rem);
   letter-spacing:.05em;
