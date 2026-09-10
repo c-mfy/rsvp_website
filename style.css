@@ -50,6 +50,19 @@ body{
 }
 
 /* bow corners */
+
+.miffy{
+  position:absolute;
+  width:clamp(100px,10vw,80px);
+  height:auto;
+  pointer-events:none;
+}
+.miffy.tl{top:15px;left:0px}
+.miffy.tr{top:15px;right:0px}
+.miffy.bl{bottom:15px;left:0px}
+.miffy.br{bottom:15px;right:0px}
+.miffy.tr{transform:scaleX(-1)}
+
 .bow{position:absolute;width:clamp(52px,15vw,96px);height:auto;color:var(--rose);pointer-events:none}
 .bow.tl{top:-6px;left:-6px}
 .bow.tr{top:-6px;right:-6px;transform:scaleX(-1)}
@@ -113,10 +126,14 @@ body{
   border-left:1px solid rgba(140,29,54,.35);
   border-right:1px solid rgba(140,29,54,.35);
 }
+
 .when .side{
-  font-size:clamp(.86rem,3.4vw,1.05rem);
-  letter-spacing:.13em;
-  text-transform:uppercase;
+  font-weight: bold;
+}
+.when .side + .side{
+  border-left:1px solid rgba(140,29,54,.35);
+  padding-left:22px;
+  font-weight: bold;
 }
 
 .where{margin:1.1em auto 0;max-width:34ch;color:var(--berry);font-size:clamp(1rem,4vw,1.12rem)}
