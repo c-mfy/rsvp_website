@@ -1,10 +1,9 @@
 :root{
   --paper:    #FBF3E7;
   --card:     #FEFAF3;
-  --berry:    #8C1D36;
+  --berry:    #bd6e82;
   --rose:     #E48EA1;
   --blush:    #F6DCE1;
-  --tan:      #D9A273;
   --ink:      #5C1F2C;
   --muted:    #9A7280;
 }
@@ -35,7 +34,7 @@ body{
 .card{
   position:relative;
   background:var(--card);
-  border:1.5px solid rgba(217,162,115,.85);
+  border:1.5px solid var(--rose);
   border-radius:3px;
   box-shadow:0 1px 0 rgba(140,29,54,.06), 0 18px 40px -28px rgba(92,31,44,.45);
   padding:clamp(38px, 9vw, 68px) clamp(20px, 6vw, 56px);
@@ -177,7 +176,7 @@ h2{
 .doing li{
   display:flex;gap:.85em;align-items:baseline;
   padding:.7em 0;
-  border-bottom:1px dashed rgba(217,162,115,.6);
+  border-bottom:1px dashed var(--rose);
 }
 .doing li:last-child{border-bottom:0}
 .doing .mark{color:var(--rose);flex:0 0 auto;font-size:1.1em}
@@ -199,7 +198,7 @@ label.field > span{display:block;font-weight:600;color:var(--berry);margin-botto
 input[type=text], textarea{
   width:100%;font-family:inherit;font-size:1.05rem;color:var(--ink);
   background:#fff;
-  border:1.5px solid rgba(217,162,115,.9);
+  border:1.5px solid var(--rose);
   border-radius:3px;
   padding:.7em .8em;
 }
@@ -210,7 +209,7 @@ input[type=text]:focus, textarea:focus{border-color:var(--rose);outline:none;box
 .yesno{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .yesno label{
   display:block;text-align:center;cursor:pointer;
-  border:1.5px solid rgba(217,162,115,.9);border-radius:3px;
+  border:1.5px solid var(--rose);border-radius:3px;
   padding:.9em .6em;background:#fff;
   transition:background .15s ease,border-color .15s ease,color .15s ease;
 }
@@ -222,7 +221,7 @@ input[type=text]:focus, textarea:focus{border-color:var(--rose);outline:none;box
 /* bring chips */
 .chips{display:flex;flex-wrap:wrap;gap:9px}
 .chips label{
-  cursor:pointer;border:1.5px solid rgba(217,162,115,.9);
+  cursor:pointer;border:1.5px solid var(--rose);
   padding:.5em 1em;background:#fff;
   transition:background .15s ease,border-color .15s ease,color .15s ease;
 }
