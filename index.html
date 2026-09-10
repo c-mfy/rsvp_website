@@ -36,38 +36,11 @@
      ========================================================= -->
     <main class="card invite">
       <img class="miffy tl" src="bow1.png" alt="" draggable="false">
-      <path d="M60 30c-9-14-26-19-34-11s-2 22 12 25c9 2 17-2 22-14z" />
-      <path d="M60 30c9-14 26-19 34-11s2 22-12 25c-9 2-17-2-22-14z" />
-      <circle cx="60" cy="33" r="5" />
-      <path d="M56 40c-6 16-14 30-28 44" stroke-opacity=".75" />
-      <path d="M64 40c6 16 16 28 32 40" stroke-opacity=".75" />
-      <path d="M50 44c-10 12-24 18-40 20" stroke-opacity=".45" />
-      </svg>
       <img class="miffy tr" src="bow1.png" alt="" draggable="false">
-      <path d="M60 30c-9-14-26-19-34-11s-2 22 12 25c9 2 17-2 22-14z" />
-      <path d="M60 30c9-14 26-19 34-11s2 22-12 25c-9 2-17-2-22-14z" />
-      <circle cx="60" cy="33" r="5" />
-      <path d="M56 40c-6 16-14 30-28 44" stroke-opacity=".75" />
-      <path d="M64 40c6 16 16 28 32 40" stroke-opacity=".75" />
-      <path d="M50 44c-10 12-24 18-40 20" stroke-opacity=".45" />
-      </svg>
       <!-- <img class="miffy bl" src="bow1.png" alt="" draggable="false"> -->
-      <path d="M60 30c-9-14-26-19-34-11s-2 22 12 25c9 2 17-2 22-14z" />
-      <path d="M60 30c9-14 26-19 34-11s2 22-12 25c-9 2-17-2-22-14z" />
-      <circle cx="60" cy="33" r="5" />
-      <path d="M56 40c-6 16-14 30-28 44" stroke-opacity=".75" />
-      <path d="M64 40c6 16 16 28 32 40" stroke-opacity=".75" />
-      </svg>
       <!-- <img class="miffy br" src="bow1.png" alt="" draggable="false"> -->
-      <path d="M60 30c-9-14-26-19-34-11s-2 22 12 25c9 2 17-2 22-14z" />
-      <path d="M60 30c9-14 26-19 34-11s2 22-12 25c-9 2-17-2-22-14z" />
-      <circle cx="60" cy="33" r="5" />
-      <path d="M56 40c-6 16-14 30-28 44" stroke-opacity=".75" />
-      <path d="M64 40c6 16 16 28 32 40" stroke-opacity=".75" />
-      </svg>
 
       <p class="kicker">You are invited</p>
-
 
       <img class="cake" src="miffy3.png" alt="" draggable="false">
 
@@ -93,7 +66,6 @@
      ========================================================= -->
     <section class="card">
       <h2>what we're doing</h2>
-      <p class="lede"></p>
       <ul class="doing">
         <li><span class="mark">&#10022;</span><span><b>shrinky dink keychains</b> <span class="note">— draw, bake for 3
               min, and assemble a keychain</span></span></li>
@@ -118,7 +90,7 @@
           <label class="field">
             <span>your name</span>
             <input type="text" id="name" name="name" autocomplete="name" placeholder="name">
-            <p class="err" id="nameErr" hidden>Please add your name.</p>
+            <p class="err" id="nameErr" hidden>add ur name bruh</p>
           </label>
 
           <fieldset>
@@ -130,23 +102,12 @@
             <p class="err" id="attErr" hidden>pick one so we can plan.</p>
           </fieldset>
 
-          <!-- EDIT ME #4 — the bring list -->
+          <!-- The list is built from the bring_items table in Supabase.
+               To change labels or quotas, edit the rows there — not here. -->
           <fieldset id="bringBlock" hidden>
             <legend>can you bring anything?</legend>
             <p class="hint">not required! if it's grey, someone already has it covered.</p>
-            <div class="chips">
-              <label><input type="checkbox" name="bring" value="Alcohol"><span>alcohol</span></label>
-              <label><input type="checkbox" name="bring" value="Mixers / juice"><span>mixers / juice</span></label>
-              <label><input type="checkbox" name="bring" value="Balloons"><span>balloons</span></label>
-              <label><input type="checkbox" name="bring" value="Flowers"><span>flowers</span></label>
-              <label><input type="checkbox" name="bring" value="Sweet snacks"><span>sweet snacks</span></label>
-              <label><input type="checkbox" name="bring" value="Savory snacks"><span>savory snacks</span></label>
-              <label><input type="checkbox" name="bring" value="Decorations"><span>decorations</span></label>
-              <label><input type="checkbox" name="bring" value="Cups"><span>cups</span></label>
-              <label><input type="checkbox" name="bring" value="Plates"><span>plates</span></label>
-              <label><input type="checkbox" name="bring" value="A board game"><span>a board game</span></label>
-              <label><input type="checkbox" name="bring" value="Good vibes"><span>good vibes</span></label>
-            </div>
+            <div class="chips" id="chips"></div>
           </fieldset>
 
           <label class="field">
@@ -163,12 +124,9 @@
       </div>
 
       <div id="doneView" class="done" hidden>
-        <p class="script" id="doneTitle">Yay</p>
+        <p class="honoree" id="doneTitle">Yay</p>
         <p class="lede" id="doneMsg"></p>
         <ul id="doneList"></ul>
-        <div class="actions">
-          <button class="btn btn-ghost" type="button" id="againBtn">Change my answer</button>
-        </div>
       </div>
     </section>
 
@@ -176,144 +134,7 @@
 
   </div>
 
-  <script>
-    /* ============================================================
-       EDIT ME #5 — settings
-       ============================================================ */
-    const CONFIG = {
-      // Paste your Formspree / Getform / Apps Script URL here.
-      // Leave empty ("") to run in demo mode: nothing is sent anywhere.
-      endpoint: "",
-
-      // Calendar event details
-      event: {
-        title: "San's 21st Birthday",
-        location: "120 North Ave NW, Apt 415, Atlanta, GA 30332",
-        details: "Shrinky dinks, pipe cleaner flowers, mahjong, karaoke, cute drinks.",
-        start: "2026-09-14T19:00:00",  // local time
-        end: "2026-09-14T23:30:00"
-      }
-    };
-
-    /* ---------- show the bring list only if they're coming ---------- */
-    const form = document.getElementById("rsvpForm");
-    const bringBlock = document.getElementById("bringBlock");
-
-    form.addEventListener("change", (e) => {
-      if (e.target.name === "attending") {
-        bringBlock.hidden = e.target.value !== "yes";
-        document.getElementById("attErr").hidden = true;
-      }
-      if (e.target.id === "name") document.getElementById("nameErr").hidden = true;
-    });
-
-    /* ---------- submit ---------- */
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const name = document.getElementById("name").value.trim();
-      const attending = form.querySelector("input[name=attending]:checked");
-      const note = document.getElementById("note").value.trim();
-      const bring = [...form.querySelectorAll("input[name=bring]:checked")].map(c => c.value);
-
-      let bad = false;
-      document.getElementById("nameErr").hidden = !!name;
-      document.getElementById("sendErr").hidden = true;
-      if (!name) bad = true;
-      document.getElementById("attErr").hidden = !!attending;
-      if (!attending) bad = true;
-      if (bad) {
-        form.querySelector(".err:not([hidden])").scrollIntoView({ block: "center", behavior: "smooth" });
-        return;
-      }
-
-      const payload = {
-        name,
-        attending: attending.value,
-        bringing: attending.value === "yes" ? bring.join(", ") : "",
-        note,
-        submittedAt: new Date().toLocaleString()
-      };
-
-      const btn = document.getElementById("submitBtn");
-      btn.disabled = true;
-      btn.textContent = "Sending...";
-
-      try {
-        if (CONFIG.endpoint) {
-          const res = await fetch(CONFIG.endpoint, {
-            method: "POST",
-            headers: { "Content-Type": "application/json", "Accept": "application/json" },
-            body: JSON.stringify(payload)
-          });
-          if (!res.ok) throw new Error("bad status");
-        } else {
-          console.log("Demo mode — no endpoint set. Would have sent:", payload);
-          await new Promise(r => setTimeout(r, 400));
-        }
-        showDone(payload);
-      } catch (err) {
-        document.getElementById("sendErr").hidden = false;
-      } finally {
-        btn.disabled = false;
-        btn.textContent = "Send RSVP";
-      }
-    });
-
-    function showDone(p) {
-      const coming = p.attending === "yes";
-      document.getElementById("doneTitle").textContent = coming ? "Yay" : "Next time";
-      document.getElementById("doneMsg").textContent = coming
-        ? "You're on the list, " + p.name + ". October 24 at 7."
-        : "Thanks for telling us, " + p.name + ". You'll be missed.";
-
-      const list = document.getElementById("doneList");
-      list.innerHTML = "";
-      if (coming && p.bringing) {
-        const li = document.createElement("li");
-        li.textContent = "You're bringing: " + p.bringing;
-        list.appendChild(li);
-      }
-
-      document.getElementById("formView").hidden = true;
-      document.getElementById("doneView").hidden = false;
-      document.getElementById("rsvp").scrollIntoView({ block: "center", behavior: "smooth" });
-    }
-
-    document.getElementById("againBtn").addEventListener("click", () => {
-      document.getElementById("doneView").hidden = true;
-      document.getElementById("formView").hidden = false;
-    });
-
-    /* ---------- add to calendar ---------- */
-    document.getElementById("ics").addEventListener("click", () => {
-      const fmt = (s) => {
-        const d = new Date(s);
-        const p = (n) => String(n).padStart(2, "0");
-        return d.getUTCFullYear() + p(d.getUTCMonth() + 1) + p(d.getUTCDate()) + "T"
-          + p(d.getUTCHours()) + p(d.getUTCMinutes()) + "00Z";
-      };
-      const e = CONFIG.event;
-      const ics = [
-        "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//invite//EN", "BEGIN:VEVENT",
-        "UID:" + Date.now() + "@invite",
-        "DTSTAMP:" + fmt(new Date().toISOString()),
-        "DTSTART:" + fmt(e.start),
-        "DTEND:" + fmt(e.end),
-        "SUMMARY:" + e.title,
-        "LOCATION:" + e.location,
-        "DESCRIPTION:" + e.details,
-        "END:VEVENT", "END:VCALENDAR"
-      ].join("\r\n");
-
-      const url = URL.createObjectURL(new Blob([ics], { type: "text/calendar" }));
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "birthday.ics";
-      a.click();
-      URL.revokeObjectURL(url);
-    });
-  </script>
+  <script src="rsvp.js"></script>
 </body>
 
 </html>
