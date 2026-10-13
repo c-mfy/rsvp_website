@@ -10,7 +10,7 @@ const CONFIG = {
 
   event: {
     title: "San's 21st Birthday",
-    location: "120 North Ave North, Apt 415, Atlanta, GA 30332",
+    location: "...",
     details: "Shrinky dinks, pipe cleaner flowers, mahjong, karaoke, cute drinks.",
     start: "2026-09-14T19:00:00",
     end: "2026-09-14T23:30:00"
